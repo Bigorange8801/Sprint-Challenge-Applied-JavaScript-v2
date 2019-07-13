@@ -24,7 +24,7 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
     article.forEach(item => {
         item.forEach( itemList => {
             console.log(itemList)
-            cards.append(articleList(itemList))
+            cards.appendChild(articleList(itemList))
         })
     })
 })
@@ -36,31 +36,35 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
 function articleList(itemList){
     const card=document.createElement('div')
     const headline=document.createElement('div')
-    const author=document.createElement('div')
+    const author=document.createElement('span')
     const imgContainer=document.createElement('div')
-    const src=document.createElement('img')
-    const by=document.createElement('span')
-
+    const authorImg=document.createElement('img')
+    const authorContainer=document.createElement('div')
+    
+    
+   
 //style
     card.classList.add('card')
     headline.classList.add('headline')
-    author.classList.add('author-span')
+    authorContainer.classList.add('author')
     imgContainer.classList.add('img-container')
     
 
 //text content
-card.textContent=itemList
+author.textContent=itemList.authorName
+headline.textContent=itemList.headline
+authorImg.src=itemList.authorPhoto
+
     
 
 //connected
     card.appendChild(headline)
-    card.appendChild(author)
-    card.appendChild(imgContainer)
-    card.appendChild(src)
-    card.appendChild(by)
-
+    card.appendChild(authorContainer)
+    authorContainer.appendChild(imgContainer)
+    imgContainer.appendChild(authorImg)
+    authorContainer.appendChild(author)
+    
     return card
 
 }
  
-// cards.appendChild(articleList(itemList))
