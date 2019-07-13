@@ -30,7 +30,7 @@ function tabList(tab1){
 
 //textContent
     tab.textContent= tab1
-//connect
+// connect
     
     return tab
 
